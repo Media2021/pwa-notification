@@ -1,0 +1,18 @@
+{
+    "name": "May I interrupt you ?",
+    "short_name": "notifications",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#007bff",
+    "icons": [
+      {
+        "src": "./images/download (6).png",
+        "sizes": "160x160",
+        "type": "image/png"
+      }
+    ],
+    
+  "id": "com.myCase2"
+  }
+  

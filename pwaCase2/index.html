@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Media Hannan">
+    <meta name "description" content="Sample site as a resource to build my first PWA">
+    <meta name="keywords" content="pwa,workshop,fontys,smart mobile">
+    <link rel="stylesheet" href="/styles.css">
+  
+    <link rel="manifest" href="./manifest.json">
+    <title>Notification</title>
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(function(registration) {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch(function(error) {
+            console.error('Service Worker registration failed:', error);
+          });
+      }
+    </script>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics.js";
+      import { getMessaging, getToken } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-messaging.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyB8au7XOcxkABG92etJgqbvgSZ2aP8XCHQ",
+        authDomain: "may-i-interrupt-you.firebaseapp.com",
+        projectId: "may-i-interrupt-you",
+        storageBucket: "may-i-interrupt-you.appspot.com",
+        messagingSenderId: "463416516667",
+        appId: "1:463416516667:web:c4c9a896758b2a87977c1e",
+        measurementId: "G-1EDSFMZT7H"
+      };
+
+      // Load Firebase and initialize the app here
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const messaging = getMessaging(app);
+     
+
+      // Define the requestPermission function here
+      function requestPermission() {
+        console.log("Requesting permission...");
+        Notification.requestPermission().then((permission) => {
+          if (permission === "granted") {
+            console.log("Notification permission granted.");
+            setInterval(() => {
+        showMessage("May I Interrupt you ????");
+     }, 3000); 
+           registration.
+            getToken(messaging, {
+              vapidKey: "BDkt4IMepC_AFWCXeOiRRu5zZvHquOsvkI2ag5HUvU4B5Z58niPt4qvUgD085aWllPH14wJC1A5-XVjKFiZ_a8I",
+            }).then((currentToken) => {
+              if (currentToken) {
+                console.log("currentToken: ", currentToken);
+              } else {
+                console.log("Can not get token");
+              }
+            });
+          } else {
+            console.log("Do not have permission!");
+          }
+        });
+      }
+      // Function to display a message
+function showMessage(message) {
+  const notification = new Notification("Notification", {
+    body: message,
+    icon: "./images/download (6).png", // Provide the path to your notification icon
+  });
+}
+      // Call the requestPermission function
+      requestPermission();
+    </script>
+     <title>Notification</title>
+    </head>
+    <body>
+        <header>
+            <h1>Media Hannan</h1>
+            <p>Web Developer & Designer</p>
+        </header>
+    
+        <section class="portfolio">
+            <h2>Portfolio</h2>
+            <div class="project">
+                <img src="./images/WhatsApp Image 2023-11-01 at 4.35.54 PM.jpeg" alt="Project 1">
+                <h3>Project 1</h3>
+                <p> c# </p>
+            </div>
+            <div class="project">
+                <img src="./images/rename.jpg" alt="Project 2">
+                <h3>Project 2</h3>
+                <p>c#</p>
+            </div>
+            
+        </section>
+    
+        <section class="about">
+            <h2>About Me</h2>
+            <img src="./images/me  - Copy.jpg" alt="Media Hannan">
+            <p>I am a passionate software student eager to explore the ever-evolving world of technology. I'm currently pursuing my studies in software engineering and dedicated to mastering the art of coding and problem-solving.
+
+My journey in the software world has been an exciting adventure. I'm constantly seeking new challenges and opportunities to expand my knowledge in programming languages, software development methodologies, and emerging technologies. From building web applications to diving into the world of mobile app development, I'm enthusiastic about every aspect of software development.
+
+I thrive on collaboration and enjoy working in teams to tackle complex problems and develop innovative solutions. I believe that the best way to learn and grow is by embracing every coding challenge that comes my way.
+
+Outside of coding, I love exploring new tech trends, attending hackathons, and keeping an eye on the latest developments in the software industry. My goal is to contribute to creating software that makes a positive impact on the world and helps shape the future.
+
+I'm excited to continue my journey in the world of software development and look forward to the endless possibilities that lie ahead.
+Feel free to personalize this profile with your own experiences, aspirations, and interests.</p>
+        </section>
+    
+        <section class="contact">
+            <h2>Contact Me</h2>
+            <p>You can reach out to me at <a href="mailto:hannaict2022@gmail.com">hannanict2022@gmail.com</a>.</p>
+        </section>
+        
+        <script src="./scripts.js" type="text/javascript"></script>
+    </body>
+    </html>
